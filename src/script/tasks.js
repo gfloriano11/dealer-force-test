@@ -1,7 +1,7 @@
 async function getTasks(){
 
     try{ 
-        const response = await fetch('../app/model/tasks.php', {
+        const response = await fetch('../app/index.php?method=tasks', {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json'
@@ -9,14 +9,14 @@ async function getTasks(){
           });
 
         if(!response.ok){
-            throw new Error('Erro ao buscar tasks');
+            throw new Error(`Erro na requisição: ${response.status} ${response.statusText}`);
         }
 
         const data = await response.json();
         console.log(data);
 
-    } catch {
-        console.log('Erro ao buscar tasks');
+    } catch (error){
+        console.log('Erro ao buscar tasks', error);
     }
 }
 
