@@ -22,8 +22,6 @@
                 $data = 'Não há tarefas';
             }
 
-            var_dump($data);
-
             return $data;
         }
     }
