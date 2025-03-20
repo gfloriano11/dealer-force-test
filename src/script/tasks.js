@@ -1,20 +1,23 @@
-function getTasks(){
+async function getTasks(){
 
     try{ 
-        const response = fetch('../../app/model/tasks.php', {
+        const response = await fetch('../app/model/tasks.php', {
             method: 'GET',
             headers: {
-                'Content-type': 'application/json'
+              'Content-Type': 'application/json'
             }
-        })
+          });
 
         if(!response.ok){
             throw new Error('Erro ao buscar tasks');
         }
 
-        console.log(response);
+        const data = await response.json();
+        console.log(data);
 
     } catch {
         console.log('Erro ao buscar tasks');
     }
 }
+
+getTasks()
