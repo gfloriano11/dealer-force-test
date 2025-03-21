@@ -6,7 +6,7 @@
     
     require_once 'model/Tasks.php';
 
-    if($_GET['method'] === 'tasks'){
+    if($_GET['method'] === 'tasks' && $_GET['action'] === 'get'){
         $controller = new TasksController;
         $controller->tasks();
     }

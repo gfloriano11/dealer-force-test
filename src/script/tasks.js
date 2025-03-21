@@ -3,7 +3,7 @@ async function getTasks(){
     let tasks;
     
     try{ 
-        const response = await fetch('../app/index.php?method=tasks', {
+        const response = await fetch('../app/index.php?method=tasks&action=get', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
