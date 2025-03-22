@@ -84,3 +84,24 @@
     width: 30px;
     transition: 0.5s all ease;
 }
+
+#add_task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #ececec;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    border: 1px solid #bdbdbd;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    box-shadow: 1px 10px 10px rgb(163, 163, 163);
+}
+
+#add_task:hover {
+    background-color: #e3e3e3;
+    transform: scale(1.05);
+}
