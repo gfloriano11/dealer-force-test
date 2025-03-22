@@ -1,5 +1,5 @@
 const addTaskButton = document.querySelector('#add_task');
-const cancelButton = document.querySelector('.cancel_button');
+const cancelButton = document.querySelector('.cancel_add_button');
 
 addTaskButton.addEventListener('click', () => {
 
