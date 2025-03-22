@@ -19,7 +19,7 @@
             }
 
             if(!$data){
-                $data = 'Não há tarefas';
+                throw new Error('Não há tarefas');
             }
 
             return $data;
