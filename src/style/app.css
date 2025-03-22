@@ -6,3 +6,38 @@
     justify-content: center;
     align-items: center;
 }
+
+#tasks_title{
+    font-size: 32px;
+}
+
+.task{
+    display: flex;
+    flex-direction: column;
+    background-color: #f5f5f5;
+    padding: 20px;
+}
+
+.task_title{
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.check{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    padding: 10px;
+    border-radius: 25px;
+    border: 1px solid rgb(182, 182, 182);
+}
+
+.check_icon{
+    user-select: none;
+    -webkit-user-drag: none;
+    opacity: 1;
+    width: 30px;
+}
