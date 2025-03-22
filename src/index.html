@@ -42,7 +42,36 @@
                 </div>
             </div>
         </section>
+        <section id="add_task_form" class="hide">
+            <div class="form_container">
+                <div class="form_task">
+                    <form method="POST" autocomplete="off">
+                        <div>
+                            <div id="info">
+                                <div class="input_container"> 
+                                    <label for="task_name">Nome da Tarefa:</label>
+                                    <input class="input" name="task_name" type="text">
+                                </div>
+                                <div class="input_container">
+                                    <label for="task_desc">Descrição da Tarefa:</label>
+                                    <textarea name="task_desc"></textarea>
+                                </div>
+                                <div class="input_container">
+                                    <label for="final_date">Data Final:</label>
+                                    <input class="input" name="final_date" type="date">
+                                </div>
+                            </div>
+                            <div class="buttons">
+                                <button class="cancel_button" type="button">Cancelar</button>
+                                <button class="create_button">Criar Tarefa</button>
+                            </div>
+                        </div>
+                    </form>                    
+                </div>
+            </div>
+        </section>
     </section>
     <script src="script/tasks.js"></script>
+    <script src="script/addTask.js"></script>
 </body>
 </html>
