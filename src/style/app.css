@@ -12,10 +12,40 @@
 }
 
 .task{
+    width: 275px;
+    max-height: 300px;
+    min-height: 100px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 20px;
+    border: 1px solid rgb(189, 189, 189);
+}
+
+.task_info{
+    width: 150px;
     display: flex;
     flex-direction: column;
-    background-color: #f5f5f5;
-    padding: 20px;
+    gap: 10px;
+}
+
+.other_info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.actions{
+    min-height: 100px;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: first baseline;
+}
+
+.icon{
+    cursor: pointer;
 }
 
 .task_title{
