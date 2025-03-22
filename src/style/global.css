@@ -11,3 +11,9 @@ body{
     background-color: var(--background-color);
     font-family: var(--font-family);
 }
+
+.blur{
+    transition: 0.8s all ease;
+    filter: blur(3px);
+    pointer-events: none;
+}
