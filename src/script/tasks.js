@@ -21,11 +21,16 @@ async function getTasks(){
     }
     
     tasks.forEach(task => {
+        const tasksContainer = document.querySelector('#tasks');
         const taskContainer = document.createElement('div');
         const titleContainer = document.createElement('div');
         const taskTitle = document.createElement('p');
 
         taskTitle.innerText = task.task_name;
+
+        tasksContainer.appendChild(taskContainer);
+        taskContainer.appendChild(titleContainer);
+        titleContainer.appendChild(taskTitle);
     })
     
 
