@@ -8,5 +8,10 @@
 
     if($_GET['method'] === 'tasks' && $_GET['action'] === 'get'){
         $controller = new TasksController;
-        $controller->tasks();
+        $controller->getTasks();
+    }
+
+    if($_GET['method'] === 'tasks' && $_GET['action'] === 'create'){
+        $controller = new TasksController;
+        $controller->createTask();
     }
