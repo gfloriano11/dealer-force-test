@@ -17,22 +17,22 @@ addTaskButton.addEventListener('click', () => {
 
     createTask.addEventListener('click', async () => {
 
-        const taskName = document.querySelector('[name="task_name"]');
-        const taskDesc = document.querySelector('[name="task_desc"]');
-        const taskDate = document.querySelector('[name="final_date"]');
+        const taskName = document.querySelector('[name="task_name"]').value;
+        const taskDesc = document.querySelector('[name="task_desc"]').value;
+        const taskDate = document.querySelector('[name="final_date"]').value;
 
         try {
 
-            const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=task&action=create', {
+            const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasks&action=create', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: {
-                    taskName: taskName.value,
-                    taskDesc: taskDesc.value,
-                    taskDate: taskDate.value
-                }
+                body: JSON.stringify({
+                    taskName: taskName,
+                    taskDesc: taskDesc,
+                    taskDate: taskDate
+                })
             })
 
             if(!response.ok){
