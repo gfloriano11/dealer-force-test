@@ -24,6 +24,27 @@
 
             return $data;
         }
+
+        public static function createTask($task_info){
+
+            foreach($task_info as $key => $value){
+                echo $key;
+                $$key = $value;
+            }
+
+            $conn = Connection::getConn();
+
+            $query = "INSERT INTO tasks
+            (task_name, task_desc, final_date)
+            VALUES
+            (?, ?, ?)";
+
+            $statement = $conn->prepare($query);
+
+            $statement->bind_param('ssd', $taskName, $taskDesc, $taskDate);
+
+            $statement->execute();
+        }
     }
 
 ?>
