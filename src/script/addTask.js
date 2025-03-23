@@ -12,6 +12,38 @@ addTaskButton.addEventListener('click', () => {
     title.classList.add('blur');
     addTaskButton.classList.add('blur');
     addTaskForm.classList.remove('hide');
+
+    const createTask = document.querySelector('.create_button');
+
+    createTask.addEventListener('click', async () => {
+
+        const taskName = document.querySelector('[name="task_name"]');
+        const taskDesc = document.querySelector('[name="task_desc"]');
+        const taskDate = document.querySelector('[name="final_date"]');
+
+        try {
+
+            const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=task&action=create', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: {
+                    taskName: taskName.value,
+                    taskDesc: taskDesc.value,
+                    taskDate: taskDate.value
+                }
+            })
+
+            if(!response.ok){
+                throw new Error('Erro ao criar task');
+            }
+
+            
+        } catch (error){
+            console.log('Erro ao criar task', error)
+        }
+    })
 });
 
 cancelButton.addEventListener('click', () => {
