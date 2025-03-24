@@ -30,7 +30,7 @@ const editButton = document.querySelector('.edit_task')
 
 editButton.addEventListener('click', async () => {
 
-    const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=task&action=edit', {
+    const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasksk&action=edit', {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
