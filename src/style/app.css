@@ -7,6 +7,12 @@
     align-items: center;
 }
 
+#tasks{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 #tasks_title{
     font-size: 32px;
 }
