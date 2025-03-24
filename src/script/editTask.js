@@ -13,7 +13,6 @@ editIcon.forEach(edit => {
 
         taskId = task.dataset.id;
 
-
         editForm.classList.remove('hide');
         tasksEdit.classList.add('blur');
         titleEdit.classList.add('blur');

@@ -77,6 +77,7 @@ async function getTasks(){
         checkContainer.classList.add('check');
         checkIcon.classList.add('check_icon');
         editIcon.classList.add('icon');
+        editIcon.classList.add('edit_icon');
         trashIcon.classList.add('icon');
         actionsContainer.classList.add('actions')
         titleContainer.classList.add('task_title');
