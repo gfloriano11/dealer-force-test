@@ -77,21 +77,21 @@
                         <div>
                             <div id="info">
                                 <div class="input_container"> 
-                                    <label for="task_name">Nome da Tarefa:</label>
-                                    <input class="input" name="task_name" type="text">
+                                    <label for="edit_task_name">Nome da Tarefa:</label>
+                                    <input class="input" name="edit_task_name" type="text">
                                 </div>
                                 <div class="input_container">
-                                    <label for="task_desc">Descrição da Tarefa:</label>
-                                    <textarea name="task_desc"></textarea>
+                                    <label for="edit_task_desc">Descrição da Tarefa:</label>
+                                    <textarea name="edit_task_desc"></textarea>
                                 </div>
                                 <div class="input_container">
-                                    <label for="final_date">Data Final:</label>
-                                    <input class="input" name="final_date" type="date">
+                                    <label for="edit_final_date">Data Final:</label>
+                                    <input class="input" name="edit_final_date" type="date">
                                 </div>
                             </div>
                             <div class="buttons">
-                                <button class="cancel_button" type="button">Cancelar</button>
-                                <button class="create_button" type="button">Criar Tarefa</button>
+                                <button class="cancel_button cancel_edit" type="button">Cancelar</button>
+                                <button class="create_button edit_task" type="button">Criar Tarefa</button>
                             </div>
                         </div>
                     </form>                    
@@ -101,5 +101,6 @@
     </section>
     <script src="script/tasks.js"></script>
     <script src="script/addTask.js"></script>
+    <script src="script/editTask.js"></script>
 </body>
 </html>
