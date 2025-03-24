@@ -9,5 +9,6 @@ CREATE TABLE tasks (
     task_name VARCHAR(255) NOT NULL,
     task_desc TEXT,
     task_status ENUM('criada', 'em andamento', 'finalizada') DEFAULT ('criada'),
-    created_at DATE NOT NULL DEFAULT CURRENT_TIMESTAMP
+    created_at DATE NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    final_date DATE NOT NULL
 );
