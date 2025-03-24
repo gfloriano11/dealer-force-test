@@ -44,6 +44,8 @@ async function getTasks(){
 
         const [ano, mes, dia] = task.final_date.split("-");
         const formattedDate = `${dia}/${mes}/${ano}`;
+
+        const taskId = task.id;
         
         taskTitle.innerText = task.task_name;
         taskDesc.innerText = task.task_desc;
@@ -92,50 +94,107 @@ async function getTasks(){
         dateContainer.classList.add('created_at');
         statusContainer.classList.add('task_status');
 
-        const addTaskButtonEdit = document.querySelector('#add_task');
-        const titleEdit = document.querySelector('#tasks_title');
-        const cancelEdit = document.querySelector('.cancel_edit');
-        const editForm = document.querySelector('#edit_task_form')
-        const editButton = document.querySelector('.edit_task')
-
-        editContainer.addEventListener('click', () => {
+        editIcon.addEventListener('click', () => {
             
             editForm.classList.remove('hide');
             titleEdit.classList.add('blur');
             addTaskButtonEdit.classList.add('blur');
-
+            tasksContainer.classList.add('blur');
         })
 
         editButton.addEventListener('click', async () => {
 
-            const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasksk&action=edit', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    taskId: task.id,
-                    taskName: task.task_name,
-                    taskDesc: task.task_desc,
-                    taskDate: task.final_date
-                })
-            })
-        
-            if(!response.ok){
-                throw new Error('Não foi possível editar task');
+            
+            const taskNameInput = document.querySelector('[name="edit_task_name"]').value;
+            const taskDescInput = document.querySelector('[name="edit_task_desc"]').value;
+            const taskDateInput = document.querySelector('[name="edit_final_date"]').value;
+            const taskStatusInput = document.querySelector('[name="edit_status"]').value;
+
+            console.log(taskId);
+            console.log(taskNameInput);
+            console.log(taskDescInput);
+            console.log(taskDateInput);
+            console.log(taskStatusInput);
+            
+            if(taskNameInput !== ''){
+                console.log('fetch feito');
+                const updatedTask = {
+                    id: taskId,
+                    task_name: taskNameInput,
+                    task_desc: taskDescInput,
+                    final_date: taskDateInput,
+                    task_status: taskStatusInput
+                };
+    
+                try {
+                    const response = await fetch('../app/index.php?method=tasks&action=edit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(updatedTask)
+                    });
+    
+                    if (!response.ok) {
+                        throw new Error('Erro ao atualizar a tarefa');
+                    }
+    
+                    // Atualizar a lista de tarefas (ou fazer um refresh na página, dependendo do seu fluxo)
+                    // setTimeout(() => {
+                    //     window.location.reload();
+                    // }, 500)
+                } catch (error) {
+                    console.error('Erro ao editar a tarefa:', error);
+                }
             }
-        })
-
-        cancelEdit.addEventListener('click', () => {
-            editForm.classList.add('hide');
-            titleEdit.classList.remove('blur');
-            addTaskButtonEdit.classList.remove('blur');
-        })
-
+            
+        });
 
     })
+
+
+
+        // editContainer.addEventListener('click', () => {
+            
+
+        // })
+
+        // editButton.addEventListener('click', async () => {
+
+        //     const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasksk&action=edit', {
+        //         method: 'PUT',
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //         body: JSON.stringify({
+        //             taskId: task.id,
+        //             taskName: task.task_name,
+        //             taskDesc: task.task_desc,
+        //             taskDate: task.final_date
+        //         })
+        //     })
+        
+        //     if(!response.ok){
+        //         throw new Error('Não foi possível editar task');
+        //     }
+        // })
+
+        // cancelEdit.addEventListener('click', () => {
+        //     editForm.classList.add('hide');
+        //     titleEdit.classList.remove('blur');
+        //     addTaskButtonEdit.classList.remove('blur');
+        // })
     
 
 }
+
+const addTaskButtonEdit = document.querySelector('#add_task');
+const titleEdit = document.querySelector('#tasks_title');
+const cancelEdit = document.querySelector('.cancel_edit');
+const editForm = document.querySelector('#edit_task_form')
+const editButton = document.querySelector('.edit_task');
+// const editIcon = document.querySelectorAll('.icon .edit_icon');
+
+// console.log(editIcon);
 
 getTasks()

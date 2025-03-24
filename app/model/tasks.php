@@ -56,14 +56,15 @@
             $conn = Connection::getConn();
 
             $query = "UPDATE tasks
-            SET task_name = ?
-            task_desc = ?
+            SET task_name = ?,
+            task_desc = ?,
+            task_status = ?,
             final_date = ?
             WHERE id = ?";
 
             $statement = $conn->prepare($query);
 
-            $statement->bind_param('ssdi', $taskName, $taskDesc, $taskDate, $taskId);
+            $statement->bind_param('ssssi', $task_name, $task_desc, $task_status, $task_date, $id);
 
             $statement->execute();
 
