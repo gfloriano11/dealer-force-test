@@ -40,7 +40,7 @@
 
             $statement = $conn->prepare($query);
 
-            $statement->bind_param('ssd', $taskName, $taskDesc, $taskDate);
+            $statement->bind_param('sss', $taskName, $taskDesc, $taskDate);
 
             $statement->execute();
 
