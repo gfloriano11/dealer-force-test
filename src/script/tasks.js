@@ -40,9 +40,15 @@ async function getTasks(){
         const finalDate = document.createElement('p');
         const taskStatus = document.createElement('p');
 
+        task.final_date = new Date();
+        let dia  = task.final_date.getDate().toString().padStart(2, '0');
+        let mes  = (task.final_date.getMonth()+1).toString().padStart(2, '0'); //+1 pois no getMonth Janeiro começa com zero.
+        let ano  = task.final_date.getFullYear();
+        
+
         taskTitle.innerText = task.task_name;
         taskDesc.innerText = task.task_desc;
-        finalDate.innerText = task.final_date;
+        finalDate.innerText = dia+'/'+mes+'/'+ano;
         taskStatus.innerText = task.task_status;
 
         tasksContainer.appendChild(taskContainer);
