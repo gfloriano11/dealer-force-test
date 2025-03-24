@@ -13,39 +13,39 @@ addTaskButton.addEventListener('click', () => {
     addTaskButton.classList.add('blur');
     addTaskForm.classList.remove('hide');
 
-    const createTask = document.querySelector('.create_button');
-
-    createTask.addEventListener('click', async () => {
-
-        const taskName = document.querySelector('[name="task_name"]').value;
-        const taskDesc = document.querySelector('[name="task_desc"]').value;
-        const taskDate = document.querySelector('[name="final_date"]').value;
-
-        try {
-
-            const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasks&action=create', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    taskName: taskName,
-                    taskDesc: taskDesc,
-                    taskDate: taskDate
-                })
-            })
-
-            if(!response.ok){
-                throw new Error('Erro ao criar task');
-            }
-
-            
-        } catch (error){
-            console.log('Erro ao criar task', error)
-        }
-    })
 });
 
+const createTask = document.querySelector('.create_button');
+
+createTask.addEventListener('click', async () => {
+
+    const taskName = document.querySelector('[name="task_name"]').value;
+    const taskDesc = document.querySelector('[name="task_desc"]').value;
+    const taskDate = document.querySelector('[name="final_date"]').value;
+
+    try {
+
+        const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasks&action=create', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                taskName: taskName,
+                taskDesc: taskDesc,
+                taskDate: taskDate
+            })
+        })
+
+        if(!response.ok){
+            throw new Error('Erro ao criar task');
+        }
+
+        
+    } catch (error){
+        console.log('Erro ao criar task', error)
+    }
+})
 cancelButton.addEventListener('click', () => {
     const tasks = document.querySelector('#tasks');
     const title = document.querySelector('#tasks_title');

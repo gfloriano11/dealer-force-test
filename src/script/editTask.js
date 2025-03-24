@@ -23,30 +23,30 @@ editIcon.forEach(edit => {
         const taskDesc = document.querySelector('textarea[name="edit_task_desc"]').value;
         const taskDate = document.querySelector('input[name="edit_final_date"]').value;
 
-        const editButton = document.querySelector('.edit_task')
-
-        editButton.addEventListener('click', async () => {
-
-            const response = await fetch('http:localhost:80/dealer-force-test/app/index.php?method=task&action=edit', {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    taskId: taskId,
-                    taskName: taskName,
-                    taskDesc: taskDesc,
-                    taskDate: taskDate
-                })
-            })
-
-            if(!response.ok){
-                throw new Error('Não foi possível editar task');
-            }
-        })
     })
 })
 
+const editButton = document.querySelector('.edit_task')
+
+editButton.addEventListener('click', async () => {
+
+    const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=task&action=edit', {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            taskId: taskId,
+            taskName: taskName,
+            taskDesc: taskDesc,
+            taskDate: taskDate
+        })
+    })
+
+    if(!response.ok){
+        throw new Error('Não foi possível editar task');
+    }
+})
 cancelEdit.addEventListener('click', () => {
     editForm.classList.add('hide');
     tasksEdit.classList.remove('blur');
