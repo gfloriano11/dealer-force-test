@@ -47,6 +47,7 @@ async function getTasks(){
 
         tasksContainer.appendChild(taskContainer);
         taskContainer.appendChild(checkContainer);
+        taskContainer.setAttribute('task_id', task.id);
         checkContainer.appendChild(checkIcon);
         actionsContainer.appendChild(editIcon);
         actionsContainer.appendChild(trashIcon);
@@ -59,12 +60,11 @@ async function getTasks(){
         taskContainer.appendChild(actionsContainer);
         taskContainer.appendChild(otherInfo);
         otherInfo.appendChild(dateContainer);
-        otherInfo.appendChild(taskStatus);
+        otherInfo.appendChild(statusContainer);
 
         taskInfo.appendChild(titleContainer);
         taskInfo.appendChild(descContainer);
-        taskInfo.appendChild(dateContainer);
-        taskInfo.appendChild(statusContainer);
+        taskInfo.appendChild(otherInfo);
 
         titleContainer.appendChild(taskTitle);
         descContainer.appendChild(taskDesc);
@@ -72,6 +72,7 @@ async function getTasks(){
         statusContainer.appendChild(taskStatus);
 
         taskInfo.classList.add('task_info')
+        otherInfo.classList.add('other_info');
         taskContainer.classList.add('task');
         checkContainer.classList.add('check');
         checkIcon.classList.add('check_icon');
