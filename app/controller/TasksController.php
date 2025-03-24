@@ -18,4 +18,12 @@
 
             echo json_encode($task);
         }
+
+        public function editTask(){
+            $task_info = json_decode(file_get_contents('php://input'), true);
+
+            $task = Tasks::updateTask($task_info);
+
+            echo json_encode($task);
+        }
     }

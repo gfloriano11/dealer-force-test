@@ -15,3 +15,8 @@
         $controller = new TasksController;
         $controller->createTask();
     }
+
+    if($_GET['method'] === 'tasks' && $_GET['action'] === 'edit'){
+        $controller = new TasksController;
+        $controller->editTask();
+    }

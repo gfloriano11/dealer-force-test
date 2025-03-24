@@ -28,7 +28,6 @@
         public static function createTask($task_info){
 
             foreach($task_info as $key => $value){
-                echo $key;
                 $$key = $value;
             }
 
@@ -44,6 +43,31 @@
             $statement->bind_param('ssd', $taskName, $taskDesc, $taskDate);
 
             $statement->execute();
+
+            return true;
+        }
+
+        public static function updateTask($task_info){
+
+            foreach($task_info as $key => $value){
+                $$key = $value;
+            }
+
+            $conn = Connection::getConn();
+
+            $query = "UPDATE tasks
+            SET task_name = ?
+            task_desc = ?
+            final_date = ?
+            WHERE id = ?";
+
+            $statement = $conn->prepare($query);
+
+            $statement->bind_param('ssdi', $taskName, $taskDesc, $taskDate, $taskId);
+
+            $statement->execute();
+
+            return true;
         }
     }
 
