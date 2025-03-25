@@ -1,8 +1,10 @@
 const editForm = document.querySelector('#edit_task_form');
+const editTask = document.querySelector('.edit_task');
 const tasksContainer = document.querySelector('#tasks');
 const tasksTitle = document.querySelector('#tasks_title');
-const addTaskButton = document.querySelector('#add_task_button');
+const addTaskButtonEdit = document.querySelector('#add_task_button');
 const cancelEdit = document.querySelector('.cancel_edit');
+let taskId;
 
 async function getTasks(){
     
@@ -96,14 +98,14 @@ async function getTasks(){
             icon.addEventListener('click', () => {
                 // Pegar o ID da task mais próxima
                 const taskContainer = icon.closest('.task');
-                const taskId = taskContainer.getAttribute('task_id');
+                taskId = taskContainer.getAttribute('task_id');
                 
                 console.log(`Editando tarefa com ID: ${taskId}`);
 
                 editForm.classList.remove('hide');
                 tasksContainer.classList.add('blur');
                 tasksTitle.classList.add('blur');
-                addTaskButton.classList.add('blur');
+                addTaskButtonEdit.classList.add('blur');
                 
             });
         });
@@ -114,7 +116,50 @@ cancelEdit.addEventListener('click', () => {
     editForm.classList.add('hide');
     tasksContainer.classList.remove('blur');
     tasksTitle.classList.remove('blur');
-    addTaskButton.classList.remove('blur');
+    addTaskButtonEdit.classList.remove('blur');
+})
+
+editTask.addEventListener('click', async () => {
+    console.log('editando task com o id: ', taskId);
+
+    const taskName = document.querySelector('[name="edit_task_name"]').value;
+    const taskDesc = document.querySelector('[name="edit_task_desc"]').value;
+    const taskDate = document.querySelector('[name="edit_final_date"]').value;
+    const taskStatus = document.querySelector('[name="edit_status"]').value;
+
+    console.log(taskName);
+    console.log(taskDesc);
+    console.log(taskDate);
+    console.log(taskStatus);
+
+    try {
+
+        const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasks&action=edit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: taskId,
+                task_name: taskName,
+                task_desc: taskDesc,
+                task_date: taskDate,
+                task_status: taskStatus
+            })
+        })
+
+        if(!response.ok){
+            throw new Error('Erro ao criar task');
+        }
+
+        setInterval(() => {
+            window.location.reload();
+        }, 500);
+
+        
+    } catch (error){
+        console.log('Erro ao criar task', error)
+    }
 })
 
 getTasks()
