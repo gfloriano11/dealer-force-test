@@ -39,8 +39,9 @@
 
 .other_info{
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 40px;
 }
 
 .actions{
