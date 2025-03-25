@@ -86,6 +86,7 @@ async function getTasks(){
         editIcon.classList.add('icon');
         editIcon.classList.add('edit_icon');
         trashIcon.classList.add('icon');
+        trashIcon.classList.add('delete_icon');
         actionsContainer.classList.add('actions')
         titleContainer.classList.add('task_title');
         descContainer.classList.add('task_desc');
@@ -93,14 +94,13 @@ async function getTasks(){
         statusContainer.classList.add('task_status');
 
         const editIcons = document.querySelectorAll('.edit_icon');
+        const deleteIcons = document.querySelectorAll('.delete_icon');
     
         editIcons.forEach(icon => {
             icon.addEventListener('click', () => {
                 // Pegar o ID da task mais próxima
                 const taskContainer = icon.closest('.task');
                 taskId = taskContainer.getAttribute('task_id');
-                
-                console.log(`Editando tarefa com ID: ${taskId}`);
 
                 editForm.classList.remove('hide');
                 tasksContainer.classList.add('blur');
@@ -109,6 +109,39 @@ async function getTasks(){
                 
             });
         });
+
+        deleteIcons.forEach(icon => {
+            icon.addEventListener('click', async () => {
+                const taskContainer = icon.closest('.task');
+                taskId = taskContainer.getAttribute('task_id');
+                console.log('clicou pra excluir o id', taskId);
+
+                try {
+
+                    const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasks&action=delete', {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            id: taskId,
+                        })
+                    })
+            
+                    if(!response.ok){
+                        throw new Error('Erro ao deletar task');
+                    }
+            
+                    setInterval(() => {
+                        window.location.reload();
+                    }, 500);
+            
+                    
+                } catch (error){
+                    console.log('Erro ao deletar task', error)
+                }
+            })
+        })
     })
 }
 
@@ -135,7 +168,7 @@ editTask.addEventListener('click', async () => {
     try {
 
         const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasks&action=edit', {
-            method: 'POST',
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -149,7 +182,7 @@ editTask.addEventListener('click', async () => {
         })
 
         if(!response.ok){
-            throw new Error('Erro ao criar task');
+            throw new Error('Erro ao editar task');
         }
 
         setInterval(() => {
@@ -158,7 +191,7 @@ editTask.addEventListener('click', async () => {
 
         
     } catch (error){
-        console.log('Erro ao criar task', error)
+        console.log('Erro ao editar task', error)
     }
 })
 
