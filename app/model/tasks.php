@@ -70,6 +70,23 @@
 
             return true;
         }
+
+        public static function deleteTask($task_info){
+            $id = $task_info['id'];
+            echo $id;
+
+            $conn = Connection::getConn();
+
+            $query = "DELETE FROM tasks WHERE id = ?";
+
+            $statement = $conn->prepare($query);
+
+            $statement->bind_param('i', $id);
+
+            $statement->execute();
+
+            return true;
+        }
     }
 
 ?>

@@ -20,3 +20,8 @@
         $controller = new TasksController;
         $controller->editTask();
     }
+
+    if($_GET['method'] === 'tasks' && $_GET['action'] === 'delete'){
+        $controller = new TasksController;
+        $controller->deleteTask();
+    }

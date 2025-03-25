@@ -26,4 +26,12 @@
 
             echo json_encode($task);
         }
+
+        public function deleteTask(){
+            $task_info = json_decode(file_get_contents('php://input'), true);
+
+            $task = Tasks::deleteTask($task_info);
+
+            echo json_encode($task);
+        }
     }
