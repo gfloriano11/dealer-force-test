@@ -4,6 +4,9 @@
 Este projeto é uma To-Do List desenvolvida em PHP com MySQL, permitindo que os usuários adicionem, editem e excluam tarefas.
 
 ## 🚀 Tecnologias Utilizadas
+- HTML
+- CSS
+- JavaScript
 - PHP
 - MySQL
 - XAMPP (para ambiente local)
