@@ -142,6 +142,41 @@ async function getTasks(){
                 }
             })
         })
+
+        checkContainer.addEventListener('click', async () => {
+
+            taskId = taskContainer.getAttribute('task_id');
+            console.log('clicou pra checkar o id', taskId);
+
+            checkIcon.classList.remove('check_icon');
+            checkIcon.classList.add('checked');
+
+            try {
+
+                const response = await fetch('http://localhost:80/dealer-force-test/app/index.php?method=tasks&action=check', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        id: taskId,
+                    })
+                })
+        
+                if(!response.ok){
+                    throw new Error('Erro ao checkar task');
+                }
+        
+                setInterval(() => {
+                    window.location.reload();
+                }, 500);
+        
+                
+            } catch (error){
+                console.log('Erro ao checkar task', error)
+            }
+
+        })
     })
 }
 

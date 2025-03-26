@@ -6,7 +6,7 @@
 
             $conn = Connection::getConn();
 
-            $query = "SELECT * FROM tasks";
+            $query = "SELECT * FROM tasks WHERE task_status = 'Iniciada'";
 
             $statement = $conn->prepare($query);
 
@@ -65,6 +65,27 @@
             $statement = $conn->prepare($query);
 
             $statement->bind_param('ssssi', $task_name, $task_desc, $task_status, $task_date, $id);
+
+            $statement->execute();
+
+            return true;
+        }
+
+        public static function checkTask($task_info){
+
+            foreach($task_info as $key => $value){
+                $$key = $value;
+            }
+
+            $conn = Connection::getConn();
+
+            $query = "UPDATE tasks
+            SET task_status = 'Finalizada'
+            WHERE id = ?";
+
+            $statement = $conn->prepare($query);
+
+            $statement->bind_param('i', $id);
 
             $statement->execute();
 

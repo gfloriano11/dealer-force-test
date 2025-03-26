@@ -92,6 +92,10 @@
     transition: 0.5s all ease;
 }
 
+.checked{
+    width: 30px;
+}
+
 #add_task {
     display: flex;
     justify-content: center;
