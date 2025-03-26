@@ -18,7 +18,7 @@ Antes de iniciar, certifique-se de ter instalado:
 - Um navegador para acessar a aplicação
 
 ### 2️⃣ Clonando o Repositório
-Abra o terminal e execute:
+Abra o terminal e execute: (pode clonar direto na htdocs, se quiser)
 ```bash
 git clone <URL_DO_REPOSITORIO>
 cd <NOME_DO_PROJETO>
@@ -28,7 +28,7 @@ cd <NOME_DO_PROJETO>
 1. Inicie o **XAMPP** e certifique-se de que o **Apache** e o **MySQL** estão rodando.
 2. Acesse [phpMyAdmin](http://localhost/phpmyadmin/) (ou pode usar o workbench).
 3. Crie um banco de dados chamado **to_do_list**.
-4. Importe o arquivo **to_do_list.sql** localizado no repositório (app/assets/script.sql).
+4. Importe o arquivo **script.sql** localizado no repositório (app/assets/script.sql).
 
 ### 4️⃣ Configuração da Conexão com o Banco
 O arquivo de conexão já está configurado para rodar no localhost com o seguinte padrão:
