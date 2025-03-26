@@ -46,6 +46,6 @@ Caso precise alterar as credenciais, edite o arquivo de conexão conforme sua ne
 ```
 http://localhost/<NOME_DA_PASTA_DO_PROJETO>
 ```
-importante ressaltar que o aplicativo está rodando com a porta 80 (padrão do xampp), altere caso necessário.
+**importante ressaltar que o aplicativo está rodando com a porta 80 (padrão do xampp), altere caso necessário.**
 
 3. Agora, sua aplicação está pronta para uso! 🎉
